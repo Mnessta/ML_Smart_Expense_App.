@@ -1,0 +1,513 @@
+[33mcommit e4c210efd1fb307174101cf0a94e8578ec54edc1[m
+Author: Wesley <itswesleyodhiambo@gmail.com>
+Date:   Thu Nov 27 12:08:54 2025 +0300
+
+    Initial commit
+
+[1mdiff --git a/.env.example b/.env.example[m
+[1mnew file mode 100644[m
+[1mindex 0000000..52dc9a1[m
+[1m--- /dev/null[m
+[1m+++ b/.env.example[m
+[36m@@ -0,0 +1,14 @@[m
+[32m+[m[32m﻿# Supabase Configuration[m
+[32m+[m[32m# Copy this file to .env and fill in your actual credentials[m
+[32m+[m[32m# You can find these in your Supabase dashboard: Settings  API[m
+[32m+[m
+[32m+[m[32m# Supabase Project URL[m
+[32m+[m[32m# Format: https://xxxxx.supabase.co[m
+[32m+[m[32mSUPABASE_URL=https://wqprcibamipkzjstkuaj.supabase.co[m
+[32m+[m
+[32m+[m[32m# Supabase anon/public key (safe to use in client apps)[m
+[32m+[m[32m# This is a long string starting with eyJ...[m
+[32m+[m[32mSUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndxcHJjaWJhbWlwa3pqc3RrdWFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyMTU4NjIsImV4cCI6MjA3ODc5MTg2Mn0.a5-3OB4Iltun5A4A4m8iVDNLHrfdTkYsoSVD08PDTM0[m
+[32m+[m
+[32m+[m[32m# Optional: OAuth redirect URL[m
+[32m+[m[32mSUPABASE_REDIRECT_URL=io.supabase.flutter://login-callback[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a997f6b[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,49 @@[m
+[32m+[m[32m# Miscellaneous[m
+[32m+[m[32m*.class[m
+[32m+[m[32m*.log[m
+[32m+[m[32m*.pyc[m
+[32m+[m[32m*.swp[m
+[32m+[m[32m.DS_Store[m
+[32m+[m[32m.atom/[m
+[32m+[m[32m.build/[m
+[32m+[m[32m.buildlog/[m
+[32m+[m[32m.history[m
+[32m+[m[32m.svn/[m
+[32m+[m[32m.swiftpm/[m
+[32m+[m[32mmigrate_working_dir/[m
+[32m+[m
+[32m+[m[32m# IntelliJ related[m
+[32m+[m[32m*.iml[m
+[32m+[m[32m*.ipr[m
+[32m+[m[32m*.iws[m
+[32m+[m[32m.idea/[m
+[32m+[m
+[32m+[m[32m# The .vscode folder contains launch configuration and tasks you configure in[m
+[32m+[m[32m# VS Code which you may wish to be included in version control, so this line[m
+[32m+[m[32m# is commented out by default.[m
+[32m+[m[32m#.vscode/[m
+[32m+[m
+[32m+[m[32m# Flutter/Dart/Pub related[m
+[32m+[m[32m**/doc/api/[m
+[32m+[m[32m**/ios/Flutter/.last_build_id[m
+[32m+[m[32m.dart_tool/[m
+[32m+[m[32m.flutter-plugins-dependencies[m
+[32m+[m[32m.pub-cache/[m
+[32m+[m[32m.pub/[m
+[32m+[m[32m/build/[m
+[32m+[m[32m/coverage/[m
+[32m+[m
+[32m+[m[32m# Symbolication related[m
+[32m+[m[32mapp.*.symbols[m
+[32m+[m
+[32m+[m[32m# Obfuscation related[m
+[32m+[m[32mapp.*.map.json[m
+[32m+[m
+[32m+[m[32m# Android Studio will place build artifacts here[m
+[32m+[m[32m/android/app/debug[m
+[32m+[m[32m/android/app/profile[m
+[32m+[m[32m/android/app/release[m
+[32m+[m
+[32m+[m[32m# Environment variables[m
+[32m+[m[32m.env[m
+[32m+[m[32m!.env.example[m
+\ No newline at end of file[m
+[1mdiff --git a/.metadata b/.metadata[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3856074[m
+[1m--- /dev/null[m
+[1m+++ b/.metadata[m
+[36m@@ -0,0 +1,39 @@[m
+[32m+[m[32m# This file tracks properties of this Flutter project.[m
+[32m+[m[32m# Used by Flutter tool to assess capabilities and perform upgrades etc.[m
+[32m+[m[32m#[m
+[32m+[m[32m# This file should be version controlled and should not be manually edited.[m
+[32m+[m
+[32m+[m[32mversion:[m
+[32m+[m[32m  revision: "a402d9a4376add5bc2d6b1e33e53edaae58c07f8"[m
+[32m+[m[32m  channel: "stable"[m
+[32m+[m
+[32m+[m[32mproject_type: app[m
+[32m+[m
+[32m+[m[32m# Tracks metadata for the flutter migrate command[m
+[32m+[m[32mmigration:[m
+[32m+[m[32m  platforms:[m
+[32m+[m[32m    - platform: root[m
+[32m+[m[32m      create_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m      base_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m    - platform: android[m
+[32m+[m[32m      create_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m      base_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m    - platform: ios[m
+[32m+[m[32m      create_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m      base_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m    - platform: web[m
+[32m+[m[32m      create_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m      base_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m    - platform: windows[m
+[32m+[m[32m      create_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m[32m      base_revision: a402d9a4376add5bc2d6b1e33e53edaae58c07f8[m
+[32m+[m
+[32m+[m[32m  # User provided section[m
+[32m+[m
+[32m+[m[32m  # List of Local paths (relative to this file) that should be[m
+[32m+[m[32m  # ignored by the migrate tool.[m
+[32m+[m[32m  #[m
+[32m+[m[32m  # Files that are not part of the templates will be ignored by default.[m
+[32m+[m[32m  unmanaged_files:[m
+[32m+[m[32m    - 'lib/main.dart'[m
+[32m+[m[32m    - 'ios/Runner.xcodeproj/project.pbxproj'[m
+[1mdiff --git a/APP_FEATURES_AND_COMPONENTS.md b/APP_FEATURES_AND_COMPONENTS.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2311ee8[m
+[1m--- /dev/null[m
+[1m+++ b/APP_FEATURES_AND_COMPONENTS.md[m
+[36m@@ -0,0 +1,712 @@[m
+[32m+[m[32m# 📱 ML Smart Expense Track - Complete Features & Components Guide[m
+[32m+[m
+[32m+[m[32m## 🎯 App Overview[m
+[32m+[m
+[32m+[m[32mML Smart Expense Track is a comprehensive expense tracking Flutter application with AI-powered insights, cloud sync, offline support, and beautiful UI.[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## 📋 Core Features[m
+[32m+[m
+[32m+[m[32m### 1. 🔐 Authentication & User Management[m
+[32m+[m
+[32m+[m[32m#### Authentication Methods:[m
+[32m+[m[32m- **Email/Password Sign Up & Login**[m
+[32m+[m[32m  - Email validation[m
+[32m+[m[32m  - Password strength indicator[m
+[32m+[m[32m  - Password visibility toggle[m
+[32m+[m[32m  - Remember credentials option[m
+[32m+[m[32m  - Secure password storage (Flutter Secure Storage)[m
+[32m+[m
+[32m+[m[32m- **Google OAuth Sign-In**[m
+[32m+[m[32m  - One-tap Google authentication[m
+[32m+[m[32m  - Automatic account detection[m
+[32m+[m[32m  - Deep link callback handling[m
+[32m+[m[32m  - Session persistence[m
+[32m+[m
+[32m+[m[32m- **Guest Mode**[m
+[32m+[m[32m  - Use app without account[m
+[32m+[m[32m  - Limited features[m
+[32m+[m[32m  - Data stored locally only[m
+[32m+[m
+[32m+[m[32m#### User Profile:[m
+[32m+[m[32m- **Profile Management**[m
+[32m+[m[32m  - Edit name and email[m
+[32m+[m[32m  - Profile photo upload (camera/gallery)[m
+[32m+[m[32m  - Photo persistence[m
+[32m+[m[32m  - Save photo independently[m
+[32m+[m[32m  - Remove photo option[m
+[32m+[m
+[32m+[m[32m- **Password Management**[m
+[32m+[m[32m  - Forgot password (email reset)[m
+[32m+[m[32m  - Password reset via email link[m
+[32m+[m[32m  - Secure credential storage[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 2. 💰 Expense & Income Management[m
+[32m+[m
+[32m+[m[32m#### Transaction Types:[m
+[32m+[m[32m- **Expenses** - Track money spent[m
+[32m+[m[32m- **Income** - Track money received[m
+[32m+[m
+[32m+[m[32m#### Transaction Fields:[m
+[32m+[m[32m- Amount (with currency formatting)[m
+[32m+[m[32m- Category (Food, Transport, Shopping, Bills, Airtime, Entertainment, Other)[m
+[32m+[m[32m- Date (custom date picker)[m
+[32m+[m[32m- Payment Method (Cash, Card, Mobile Money, Bank Transfer)[m
+[32m+[m[32m- Notes (optional text field)[m
+[32m+[m[32m- Transaction Type (Expense/Income)[m
+[32m+[m
+[32m+[m[32m#### Features:[m
+[32m+[m[32m- **Add Expense/Income**[m
+[32m+[m[32m  - Form validation[m
+[32m+[m[32m  - Category picker with icons[m
+[32m+[m[32m  - Date picker[m
+[32m+[m[32m  - Payment method selection[m
+[32m+[m[32m  - Quick add templates[m
+[32m+[m[32m  - Success animation feedback[m
+[32m+[m
+[32m+[m[32m- **Edit Transactions**[m
+[32m+[m[32m  - Modify existing expenses/income[m
+[32m+[m[32m  - Update all fields[m
+[32m+[m[32m  - Save changes[m
+[32m+[m
+[32m+[m[32m- **Delete Transactions**[m
+[32m+[m[32m  - Slide-to-delete gesture[m
+[32m+[m[32m  - Confirmation dialog[m
+[32m+[m[32m  - Permanent deletion[m
+[32m+[m
+[32m+[m[32m- **Search & Filter**[m
+[32m+[m[32m  - Search transactions by category, note, amount[m
+[32m+[m[32m  - Filter by date range[m
+[32m+[m[32m  - Filter by transaction type[m
+[32m+[m[32m  - Real-time search results[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 3. 📊 Budget Management[m
+[32m+[m
+[32m+[m[32m#### Budget Features:[m
+[32m+[m[32m- **Create Budgets**[m
+[32m+[m[32m  - Set budget limit per category[m
+[32m+[m[32m  - Monthly budget cycles[m
+[32m+[m[32m  - Custom budget periods[m
+[32m+[m[32m  - Budget suggestions based on spending history[m
+[32m+[m
+[32m+[m[32m- **Budget Tracking**[m
+[32m+[m[32m  - Visual progress indicators[m
+[32m+[m[32m  - Spent vs. Limit comparison[m
+[32m+[m[32m  - Budget percentage calculation[m
+[32m+[m[32m  - Category-wise budget breakdown[m
+[32m+[m
+[32m+[m[32m- **Budget Alerts**[m
+[32m+[m[32m  - Smart alerts when approaching limit[m
+[32m+[m[32m  - Budget exceeded notifications[m
+[32m+[m[32m  - Visual warnings (color-coded)[m
+[32m+[m
+[32m+[m[32m- **Budget Analytics**[m
+[32m+[m[32m  - Total budget vs. total spent[m
+[32m+[m[32m  - Savings calculation[m
+[32m+[m[32m  - Category ranking by spending[m
+[32m+[m[32m  - Budget history[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 4. 📈 Analytics & Insights[m
+[32m+[m
+[32m+[m[32m#### Analytics Features:[m
+[32m+[m[32m- **Spending Analytics**[m
+[32m+[m[32m  - Total expenses calculation[m
+[32m+[m[32m  - Total income calculation[m
+[32m+[m[32m  - Net balance (Income - Expenses)[m
+[32m+[m[32m  - Category breakdown (pie charts)[m
+[32m+[m[32m  - Spending trends (line charts)[m
+[32m+[m[32m  - Daily spending charts[m
+[32m+[m
+[32m+[m[32m- **Time Filters**[m
+[32m+[m[32m  - Week view[m
+[32m+[m[32m  - Month view[m
+[32m+[m[32m  - Year view[m
+[32m+[m[32m  - Custom date range[m
+[32m+[m
+[32m+[m[32m- **Visualizations**[m
+[32m+[m[32m  - Pie charts (category breakdown)[m
+[32m+[m[32m  - Line charts (spending trends)[m
+[32m+[m[32m  - Bar charts (daily/weekly/monthly)[m
+[32m+[m[32m  - Animated charts with transitions[m
+[32m+[m
+[32m+[m[32m- **Smart Insights**[m
+[32m+[m[32m  - Spending patterns analysis[m
+[32m+[m[32m  - Budget forecasting[m
+[32m+[m[32m  - Category recommendations[m
+[32m+[m[32m  - Spending alerts[m
+[32m+[m[32m  - Savings suggestions[m
+[32m+[m
+[32m+[m[32m- **Comparisons**[m
+[32m+[m[32m  - Current vs. previous period[m
+[32m+[m[32m  - Percentage change calculations[m
+[32m+[m[32m  - Top spending categories[m
+[32m+[m[32m  - Spending velocity[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 5. 🏠 Dashboard & Overview[m
+[32m+[m
+[32m+[m[32m#### Dashboard Components:[m
+[32m+[m[32m- **Animated Balance Card**[m
+[32m+[m[32m  - Total balance display[m
+[32m+[m[32m  - Hide/show balance toggle[m
+[32m+[m[32m  - Income vs. Expenses breakdown[m
+[32m+[m[32m  - Animated counters[m
+[32m+[m
+[32m+[m[32m- **Smart Summary Bar**[m
+[32m+[m[32m  - Quick stats overview[m
+[32m+[m[32m  - Today's spending[m
+[32m+[m[32m  - This week/month totals[m
+[32m+[m[32m  - Spending velocity[m
+[32m+[m
+[32m+[m[32m- **Daily Spending Chart**[m
+[32m+[m[32m  - Daily expense visualization[m
+[32m+[m[32m  - Interactive charts[m
+[32m+[m[32m  - Date range selection[m
+[32m+[m[32m  - Animated transitions[m
+[32m+[m
+[32m+[m[32m- **Category Carousel**[m
+[32m+[m[32m  - Visual category representation[m
+[32m+[m[32m  - Quick category access[m
+[32m+[m[32m  - Category spending overview[m
+[32m+[m[32m  - Icon-based navigation[m
+[32m+[m
+[32m+[m[32m- **Transaction Timeline**[m
+[32m+[m[32m  - Chronological transaction list[m
+[32m+[m[32m  - Grouped by date[m
+[32m+[m[32m  - Slide-to-delete/edit[m
+[32m+[m[32m  - Transaction details view[m
+[32m+[m
+[32m+[m[32m- **Wallet Section**[m
+[32m+[m[32m  - Balance display[m
+[32m+[m[32m  - Quick actions[m
+[32m+[m[32m  - Recent transactions[m
+[32m+[m
+[32m+[m[32m- **Smart Alerts**[m
+[32m+[m[32m  - Budget warnings[m
+[32m+[m[32m  - Spending alerts[m
+[32m+[m[32m  - Savings goals reminders[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 6. 🔄 Data Sync & Cloud Storage[m
+[32m+[m
+[32m+[m[32m#### Sync Features:[m
+[32m+[m[32m- **Automatic Sync**[m
+[32m+[m[32m  - Background sync when online[m
+[32m+[m[32m  - Real-time updates via Supabase[m
+[32m+[m[32m  - Conflict resolution[m
+[32m+[m
+[32m+[m[32m- **Manual Sync**[m
+[32m+[m[32m  - Sync now button[m
+[32m+[m[32m  - Pull from server[m
+[32m+[m[32m  - Push to server[m
+[32m+[m[32m  - Sync status indicator[m
+[32m+[m
+[32m+[m[32m- **Offline Support**[m
+[32m+[m[32m  - Full offline functionality[m
+[32m+[m[32m  - Local SQLite database[m
+[32m+[m[32m  - Sync queue for offline changes[m
+[32m+[m[32m  - Automatic sync when online[m
+[32m+[m
+[32m+[m[32m- **Cloud Backup**[m
+[32m+[m[32m  - Backup to Supabase[m
+[32m+[m[32m  - Restore from cloud[m
+[32m+[m[32m  - Data synchronization[m
+[32m+[m[32m  - Multi-device support[m
+[32m+[m
+[32m+[m[32m- **Data Export**[m
+[32m+[m[32m  - Export to CSV[m
+[32m+[m[32m  - Share expenses data[m
+[32m+[m[32m  - Backup file generation[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 7. 🎨 Customization & Settings[m
+[32m+[m
+[32m+[m[32m#### Appearance:[m
+[32m+[m[32m- **Theme Options**[m
+[32m+[m[32m  - Light mode[m
+[32m+[m[32m  - Dark mode[m
+[32m+[m[32m  - Auto theme (system)[m
+[32m+[m[32m  - Theme toggle with animations[m
+[32m+[m
+[32m+[m[32m- **Accent Colors**[m
+[32m+[m[32m  - Customizable accent color[m
+[32m+[m[32m  - Color picker dialog[m
+[32m+[m[32m  - Multiple color options[m
+[32m+[m[32m  - Persistent color preference[m
+[32m+[m
+[32m+[m[32m- **Currency Support**[m
+[32m+[m[32m  - USD, EUR, KSH, GBP, INR, NGN, ZAR, UGX[m
+[32m+[m[32m  - Currency formatting[m
+[32m+[m[32m  - Currency symbol display[m
+[32m+[m[32m  - Currency conversion ready[m
+[32m+[m
+[32m+[m[32m#### Notifications:[m
+[32m+[m[32m- **Notification Settings**[m
+[32m+[m[32m  - Enable/disable notifications[m
+[32m+[m[32m  - Budget alerts toggle[m
+[32m+[m[32m  - Smart insights toggle[m
+[32m+[m[32m  - Notification preferences[m
+[32m+[m
+[32m+[m[32m#### Data Management:[m
+[32m+[m[32m- **Export Data**[m
+[32m+[m[32m  - CSV export[m
+[32m+[m[32m  - Share functionality[m
+[32m+[m[32m  - Backup creation[m
+[32m+[m
+[32m+[m[32m- **Import/Restore**[m
+[32m+[m[32m  - Restore from cloud[m
+[32m+[m[32m  - Import from backup[m
+[32m+[m[32m  - Data migration[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 8. 🔒 Security Features[m
+[32m+[m
+[32m+[m[32m#### App Security:[m
+[32m+[m[32m- **PIN Protection**[m
+[32m+[m[32m  - Set PIN lock[m
+[32m+[m[32m  - PIN verification[m
+[32m+[m[32m  - PIN change option[m
+[32m+[m[32m  - Secure PIN storage[m
+[32m+[m
+[32m+[m[32m- **Biometric Authentication**[m
+[32m+[m[32m  - Fingerprint unlock[m
+[32m+[m[32m  - Face ID unlock[m
+[32m+[m[32m  - Biometric setup[m
+[32m+[m[32m  - Secure authentication[m
+[32m+[m
+[32m+[m[32m- **App Lock Wrapper**[m
+[32m+[m[32m  - Automatic lock on app open[m
+[32m+[m[32m  - Lock screen overlay[m
+[32m+[m[32m  - Security timeout[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 9. 📱 User Interface Features[m
+[32m+[m
+[32m+[m[32m#### Navigation:[m
+[32m+[m[32m- **Bottom Navigation Bar**[m
+[32m+[m[32m  - 5 main sections (Home, Add, Budgets, Analytics, Settings)[m
+[32m+[m[32m  - Expandable menu items[m
+[32m+[m[32m  - Hover interactions[m
+[32m+[m[32m  - Smooth transitions[m
+[32m+[m
+[32m+[m[32m- **Tab Navigation**[m
+[32m+[m[32m  - Overview screen[m
+[32m+[m[32m  - Add expense screen[m
+[32m+[m[32m  - Budget screen[m
+[32m+[m[32m  - Analytics screen[m
+[32m+[m[32m  - Settings screen[m
+[32m+[m
+[32m+[m[32m#### UI Components:[m
+[32m+[m[32m- **Animations**[m
+[32m+[m[32m  - Page transitions[m
+[32m+[m[32m  - Success animations[m
+[32m+[m[32m  - Loading animations[m
+[32m+[m[32m  - Shimmer effects[m
+[32m+[m[32m  - Animated counters[m
+[32m+[m
+[32m+[m[32m- **Interactive Elements**[m
+[32m+[m[32m  - Pull-to-refresh[m
+[32m+[m[32m  - Slide-to-delete[m
+[32m+[m[32m  - Swipe gestures[m
+[32m+[m[32m  - Haptic feedback[m
+[32m+[m[32m  - Drag interactions[m
+[32m+[m
+[32m+[m[32m- **Loading States**[m
+[32m+[m[32m  - Skeleton loaders[m
+[32m+[m[32m  - Progress indicators[m
+[32m+[m[32m  - Loading overlays[m
+[32m+[m[32m  - Shimmer effects[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## 🧩 Components & Widgets[m
+[32m+[m
+[32m+[m[32m### Screens (15 total):[m
+[32m+[m[32m1. **SplashScreen** - App launch screen with animation[m
+[32m+[m[32m2. **LoginScreen** - Email/password login with Google OAuth[m
+[32m+[m[32m3. **SignupScreen** - User registration[m
+[32m+[m[32m4. **HomeScreen** - Main navigation hub[m
+[32m+[m[32m5. **OverviewScreen** - Dashboard with expenses overview[m
+[32m+[m[32m6. **AddExpenseScreen** - Add/edit expenses and income[m
+[32m+[m[32m7. **BudgetScreen** - Budget management and tracking[m
+[32m+[m[32m8. **AnalyticsScreen** - Spending analytics and charts[m
+[32m+[m[32m9. **SettingsScreen** - App settings and preferences[m
+[32m+[m[32m10. **EditProfileScreen** - Profile editing with photo upload[m
+[32m+[m[32m11. **PinSetupScreen** - PIN setup and verification[m
+[32m+[m[32m12. **AppLockScreen** - App lock/unlock screen[m
+[32m+[m[32m13. **SupportScreen** - Help and support[m
+[32m+[m[32m14. **FeedbackScreen** - User feedback submission[m
+[32m+[m[32m15. **PrivacyPolicyScreen** - Privacy policy display[m
+[32m+[m
+[32m+[m[32m### Widgets (30+ components):[m
+[32m+[m[32m1. **AnimatedBalanceCard** - Balance display with hide/show[m
+[32m+[m[32m2. **AnimatedCounter** - Animated number counter[m
+[32m+[m[32m3. **AppLockWrapper** - App lock functionality wrapper[m
+[32m+[m[32m4. **BudgetCard** - Budget display card[m
+[32m+[m[32m5. **CategoryCarousel** - Category selection carousel[m
+[32m+[m[32m6. **CategoryPicker** - Category selection widget[m
+[32m+[m[32m7. **ChartWidget** - Chart visualization[m
+[32m+[m[32m8. **ColorPickerDialog** - Color selection dialog[m
+[32m+[m[32m9. **CustomButton** - Custom button component[m
+[32m+[m[32m10. **DailySpendingChart** - Daily spending visualization[m
+[32m+[m[32m11. **EditableBalanceCard** - Editable balance card[m
+[32m+[m[32m12. **EditableDailySpendingChart** - Editable daily chart[m
+[32m+[m[32m13. **EditableSavingsGoalCard** - Savings goal card[m
+[32m+[m[32m14. **EnhancedGreetingHeader** - Time-based greeting[m
+[32m+[m[32m15. **ExpenseCard** - Expense display card[m
+[32m+[m[32m16. **ExpenseInsights** - Spending insights widget[m
+[32m+[m[32m17. **GradientAppBar** - Gradient app bar[m
+[32m+[m[32m18. **GreetingHeader** - Greeting header widget[m
+[32m+[m[32m19. **HomeDashboard** - Main dashboard widget[m
+[32m+[m[32m20. **LoadingOverlay** - Loading overlay[m
+[32m+[m[32m21. **OfflineIndicator** - Offline status indicator[m
+[32m+[m[32m22. **OptimizedExpenseList** - Optimized expense list[m
+[32m+[m[32m23. **PasswordStrengthIndicator** - Password strength meter[m
+[32m+[m[32m24. **QuickAddTemplates** - Quick add templates[m
+[32m+[m[32m25. **SavingsGoalCard** - Savings goal tracking[m
+[32m+[m[32m26. **SearchBar** - Search functionality[m
+[32m+[m[32m27. **SkeletonLoader** - Loading sk
