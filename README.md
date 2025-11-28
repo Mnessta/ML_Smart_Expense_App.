@@ -1,6 +1,7 @@
 # ML Smart Expense Track
 
 A smart expense tracking Flutter app with AI-powered insights, beautiful UI, and offline support.
+(A Revolute + Money Manager + Wallet App)
 
 ## Features
 
@@ -130,7 +131,6 @@ This project is licensed under the MIT License.
 
 ## Future Enhancements
 
-- [ ] Supabase integration for cloud sync
 - [ ] Receipt scanning with ML Kit
 - [ ] Recurring expenses
 - [ ] Export to PDF
